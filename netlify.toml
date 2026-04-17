@@ -1,3 +1,6 @@
+[functions]
+  node_bundler = "esbuild"
+
 [build]
   # Install frontend deps and build the React app
   command   = "cd frontend && npm install && npm run build"
