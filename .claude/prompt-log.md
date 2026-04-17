@@ -25,3 +25,7 @@ All prompts entered by the user in Claude Code sessions for this project.
 - 2026-04-17 14:37 | Convergence bonus word is confusing, Can you make some simple words
 - 2026-04-17 14:41 | in the Log analysis can you add the unusual patterns
 - 2026-04-17 14:48 | Uncaught TypeError: Cannot read properties of undefined (reading 'length')
+- 2026-04-17 14:52 | add the step to run this app in the Readme file
+- 2026-04-17 14:54 | run both back end and front end at the same time
+- 2026-04-17 14:55 | <task-notification>
+- 2026-04-17 14:55 | <task-notification>
