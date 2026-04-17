@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.prompt' | { read -r p; echo \"- $(date '+%Y-%m-%d %H:%M') | $p\" >> /Users/srikanthchebrolu/Documents/GitHub/TriageX/.claude/prompt-log.md; } 2>/dev/null || true",
+            "statusMessage": "Logging prompt..."
+          }
+        ]
+      }
+    ]
+  }
+}

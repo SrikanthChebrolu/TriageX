@@ -1,0 +1,244 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: var(--bg-header);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  /* mobile: off-canvas by default — slides in when open */
+  transition: transform 0.25s ease;
+  z-index: 200;
+}
+
+.brand {
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.brandName {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.brandSub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+
+.nav {
+  padding: 12px 0;
+  flex: 1;
+}
+
+.navSection {
+  padding: 8px 16px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.12s, color 0.12s;
+  user-select: none;
+}
+
+.navLink:hover {
+  background: rgba(255,255,255,0.07);
+  color: #ffffff;
+}
+
+.navLinkActive {
+  background: rgba(0,153,184,0.15);
+  border-left-color: var(--accent);
+  color: #ffffff;
+}
+
+.navIcon {
+  font-size: 15px;
+  width: 18px;
+  text-align: center;
+}
+
+/* Close button — only visible on mobile */
+.sidebarClose {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 12px 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius);
+  transition: color 0.15s;
+}
+.closeBtn:hover { color: #ffffff; }
+
+/* ── Overlay (mobile only) ─────────────────────────────────────────────────── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 199;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Main content ──────────────────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.topbar {
+  height: 48px;
+  min-height: 48px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px 0 20px;
+  gap: 8px;
+}
+
+/* Hamburger — hidden on desktop, visible on mobile */
+.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.menuBtn:hover { color: var(--text-primary); }
+
+.topbarTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.topbarSep {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.topbarSub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  background: var(--bg-overlay);
+}
+
+/* ── Mobile breakpoint (≤ 768px) ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Sidebar becomes fixed off-canvas panel */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 16px rgba(0,0,0,0.3);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  /* Show overlay when sidebar is open */
+  .overlayVisible {
+    display: block;
+  }
+
+  /* Show close button inside sidebar */
+  .sidebarClose {
+    display: flex;
+  }
+
+  /* Show hamburger in topbar */
+  .menuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Reduce content padding on mobile */
+  .content {
+    padding: 16px 12px;
+  }
+
+  /* Topbar adjustments */
+  .topbar {
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .topbarTitle {
+    font-size: 13px;
+  }
+
+  .topbarSub {
+    font-size: 12px;
+  }
+}
+
+/* ── Small mobile (≤ 480px) ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .topbarSep,
+  .topbarSub {
+    display: none;
+  }
+
+  .content {
+    padding: 12px 10px;
+  }
+}
