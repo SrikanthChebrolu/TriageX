@@ -3,7 +3,7 @@ AI-Powered Incident Analysis & Triage System
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js 20.18+
 - npm
 
 ---

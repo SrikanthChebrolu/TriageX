@@ -5,7 +5,7 @@
   functions = "netlify/functions"
 
 [build.environment]
-  NODE_VERSION    = "18"
+  NODE_VERSION    = "20"
   # In production the API is on the same domain — no absolute URL needed
   VITE_API_URL    = "/api/v1"
 
