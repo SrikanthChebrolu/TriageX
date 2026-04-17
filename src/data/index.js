@@ -1,21 +1,7 @@
-import { createRequire } from 'module';
-import { fileURLToPath } from 'url';
-import { dirname, join }  from 'path';
-import { readFileSync }   from 'fs';
-
-// Resolve JSON files relative to this module (ESM-safe, no import assertions needed)
-const __filename = fileURLToPath(import.meta.url);
-const __dir      = dirname(__filename);
-
-function loadJSON(filename) {
-  const path = join(__dir, filename);
-  return JSON.parse(readFileSync(path, 'utf-8'));
-}
-
-// Load once at module init — these files are small seed data
-const _incidents       = loadJSON('incidents.json');
-const _logs            = loadJSON('logs.json');
-const _serviceTopology = loadJSON('serviceTopology.json');
+// Static imports — esbuild inlines these at bundle time, no runtime fs access needed
+import _incidents       from './incidents.json'       with { type: 'json' };
+import _logs            from './logs.json'            with { type: 'json' };
+import _serviceTopology from './serviceTopology.json' with { type: 'json' };
 
 /**
  * getHistoricalIncidents — returns a fresh copy of seed incidents.
@@ -38,7 +24,6 @@ export function getLogScenarios() {
 
 /**
  * getAllLogs — flattens all scenarios into a single log array.
- * Useful for the log analysis endpoint when seeding the per-request vector store.
  */
 export function getAllLogs() {
   return _logs.flatMap(s => s.logs.map(l => ({ ...l })));
