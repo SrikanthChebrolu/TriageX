@@ -1,0 +1,23 @@
+[build]
+  # Install frontend deps and build the React app
+  command   = "cd frontend && npm install && npm run build"
+  publish   = "frontend/dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION    = "18"
+  # In production the API is on the same domain — no absolute URL needed
+  VITE_API_URL    = "/api/v1"
+
+# Route all /api/* requests to the Express Netlify Function
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api"
+  status = 200
+  force  = true
+
+# SPA fallback — all other routes serve index.html
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

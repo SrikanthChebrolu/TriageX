@@ -1,42 +1,7 @@
 import 'dotenv/config';
-import express        from 'express';
-import cors           from 'cors';
-
-import { PORT, NODE_ENV }         from './config.js';
-import { requestLogger }          from './middleware/requestLogger.js';
-import { errorHandler }           from './middleware/errorHandler.js';
+import { PORT }                   from './config.js';
 import { initKnowledgeStore }     from './services/rag/knowledgeStore.js';
-import { mountSwagger }           from './swagger.js';
-
-import logsRouter      from './routes/logs.js';
-import incidentsRouter from './routes/incidents.js';
-
-const app = express();
-
-// ── Middleware ────────────────────────────────────────────────────────────────
-app.use(cors());
-app.use(express.json({ limit: '2mb' }));   // accept large log batches
-app.use(requestLogger);
-
-// ── API Routes ────────────────────────────────────────────────────────────────
-app.use('/api/v1/logs',      logsRouter);
-app.use('/api/v1/incidents', incidentsRouter);
-
-// ── Swagger UI ────────────────────────────────────────────────────────────────
-mountSwagger(app);
-
-// ── Health check ──────────────────────────────────────────────────────────────
-app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', env: NODE_ENV, timestamp: new Date().toISOString() });
-});
-
-// ── 404 handler ───────────────────────────────────────────────────────────────
-app.use((_req, res) => {
-  res.status(404).json({ data: null, error: 'Route not found', meta: {} });
-});
-
-// ── Centralised error handler (must be last) ──────────────────────────────────
-app.use(errorHandler);
+import { app }                    from './app.js';
 
 // ── Startup ───────────────────────────────────────────────────────────────────
 async function start() {

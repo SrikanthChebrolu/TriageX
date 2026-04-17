@@ -29,3 +29,4 @@ All prompts entered by the user in Claude Code sessions for this project.
 - 2026-04-17 14:54 | run both back end and front end at the same time
 - 2026-04-17 14:55 | <task-notification>
 - 2026-04-17 14:55 | <task-notification>
+- 2026-04-17 15:18 | I want to deploy this to netlify app
