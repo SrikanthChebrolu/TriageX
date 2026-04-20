@@ -34,3 +34,5 @@ All prompts entered by the user in Claude Code sessions for this project.
 - 2026-04-20 11:35 | so can you remove them then
 - 2026-04-20 11:38 | add Memory and Skills and any other Folders needed in the .claude folder local to project
 - 2026-04-20 11:40 | add multiple subagents to run the Tests and To do the PR Review and sonar issues
+- 2026-04-20 11:46 | add a skill to know the Trading platform common logs that could occur in any Distributed production systems
+- 2026-04-20 11:49 | are commands and skill both are same?
