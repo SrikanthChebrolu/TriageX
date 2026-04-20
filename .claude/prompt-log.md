@@ -32,3 +32,5 @@ All prompts entered by the user in Claude Code sessions for this project.
 - 2026-04-17 15:18 | I want to deploy this to netlify app
 - 2026-04-20 11:35 | in the Data I wanted to know if Logs and Service Topology are being used
 - 2026-04-20 11:35 | so can you remove them then
+- 2026-04-20 11:38 | add Memory and Skills and any other Folders needed in the .claude folder local to project
+- 2026-04-20 11:40 | add multiple subagents to run the Tests and To do the PR Review and sonar issues
