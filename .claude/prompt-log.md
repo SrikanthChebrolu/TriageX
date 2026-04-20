@@ -30,3 +30,5 @@ All prompts entered by the user in Claude Code sessions for this project.
 - 2026-04-17 14:55 | <task-notification>
 - 2026-04-17 14:55 | <task-notification>
 - 2026-04-17 15:18 | I want to deploy this to netlify app
+- 2026-04-20 11:35 | in the Data I wanted to know if Logs and Service Topology are being used
+- 2026-04-20 11:35 | so can you remove them then
